@@ -8,13 +8,13 @@
     tools:context="com.akexorcist.keepdatatesting.MainActivity">
 
     <Button
-        android:id="@+id/btn_save"
+        android:id="@+id/buttonSave"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Save" />
 
     <Button
-        android:id="@+id/btn_show"
+        android:id="@+id/buttonShow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Show" />
