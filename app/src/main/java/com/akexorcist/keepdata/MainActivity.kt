@@ -1,24 +1,28 @@
-package com.akexorcist.keepdatatesting
+package com.akexorcist.keepdata
 
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_main.*
+import com.akexorcist.keepdata.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
-    private var handleStateName: String? = null
-    private var regularName: String? = null
-
     companion object {
         private const val KEY_NAME = "key_name"
     }
 
+    private val binding: ActivityMainBinding by lazy {
+        ActivityMainBinding.inflate(layoutInflater)
+    }
+
+    private var handleStateName: String? = null
+    private var regularName: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-        buttonSave.setOnClickListener { onSaveButtonClick() }
-        buttonShow.setOnClickListener { onShowButtonClick() }
+        setContentView(binding.root)
+        binding.buttonSave.setOnClickListener { onSaveButtonClick() }
+        binding.buttonShow.setOnClickListener { onShowButtonClick() }
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
@@ -47,12 +51,11 @@ class MainActivity : AppCompatActivity() {
             Regular Name : $regularName
             Handle State Name : $handleStateName
             """.trimIndent()
-        val alertDialog =
-            AlertDialog.Builder(this)
-                .setTitle("Result")
-                .setMessage(message)
-                .setCancelable(true)
-                .create()
-        alertDialog.show()
+        AlertDialog.Builder(this)
+            .setTitle("Result")
+            .setMessage(message)
+            .setCancelable(true)
+            .create()
+            .show()
     }
 }
